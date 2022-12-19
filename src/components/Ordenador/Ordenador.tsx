@@ -1,15 +1,19 @@
-import styles from "./Ordenador.module.scss";
-import opcoes from "./opcoes.json";
 import React, { useState } from "react";
 import classNames from "classnames";
+
+import styles from "./Ordenador.module.scss";
+import opcoes from "./opcoes.json";
+
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
-interface Props {
-  ordenador: string;
-  setOrdenador: React.Dispatch<React.SetStateAction<string>>;
+export type OpcoesOrdenador = "" | "porcao" | "qtd_pessoas" | "preco";
+
+interface IOrdenador {
+  ordenador: OpcoesOrdenador;
+  setOrdenador: React.Dispatch<React.SetStateAction<OpcoesOrdenador>>;
 }
 
-export default function Ordenador({ ordenador, setOrdenador }: Props) {
+export default function Ordenador({ ordenador, setOrdenador }: IOrdenador) {
   const [aberto, setAberto] = useState(false);
   const nomeOrdenador =
     ordenador && opcoes.find((opcao) => opcao.value === ordenador)?.nome;
