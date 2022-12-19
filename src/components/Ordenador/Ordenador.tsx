@@ -1,20 +1,34 @@
 import styles from "./Ordenador.module.scss";
 import opcoes from "./opcoes.json";
-import { useState } from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
-export default function Ordenador() {
+interface Props {
+  ordenador: string;
+  setOrdenador: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export default function Ordenador({ ordenador, setOrdenador }: Props) {
   const [aberto, setAberto] = useState(false);
+  const nomeOrdenador =
+    ordenador && opcoes.find((opcao) => opcao.value === ordenador)?.nome;
 
   return (
     <button
-      className={styles.ordenador}
+      className={classNames({
+        [styles.ordenador]: true,
+        [styles["ordenador--ativo"]]: ordenador !== "",
+      })}
       onClick={() => setAberto(!aberto)}
       onBlur={() => setAberto(false)} // Ao clicar por fora o dropdown fecha
     >
-      <span>Ordenar Por</span>
-      {aberto ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+      <span>{nomeOrdenador || "Ordenar Por"}</span>
+      {aberto ? (
+        <MdKeyboardArrowUp size={20} />
+      ) : (
+        <MdKeyboardArrowDown size={20} />
+      )}
       <div
         className={classNames({
           [styles.ordenador__options]: true,
@@ -22,7 +36,11 @@ export default function Ordenador() {
         })}
       >
         {opcoes.map((opcao) => (
-          <div key={opcao.value} className={styles.ordenador}>
+          <div
+            className={styles.ordenador__option}
+            key={opcao.value}
+            onClick={() => setOrdenador(opcao.value)}
+          >
             {opcao.nome}
           </div>
         ))}
