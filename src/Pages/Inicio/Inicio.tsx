@@ -1,3 +1,4 @@
+import Menu from "../../components/Menu/Menu";
 import cardapio from "../../data/cardapio.json";
 
 import "./Inicio.scss";
