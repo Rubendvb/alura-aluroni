@@ -8,6 +8,7 @@ import Ordenador, {
 import Itens from "../../components/Itens/Itens";
 
 import styles from "./Cardapio.module.scss";
+import "../../assets/styles/Tema.scss";
 
 export default function Cardapio() {
   const [busca, setBusca] = useState("");
@@ -15,20 +16,18 @@ export default function Cardapio() {
   const [ordenador, setOrdenador] = useState<OpcoesOrdenador>("");
 
   return (
-    <main>
-      <section className={styles.cardapio}>
-        <h3 className={styles.cardapio__titulo}>Cardápio</h3>
+    <section className={styles.cardapio}>
+      <h3 className="titulo">Cardápio</h3>
 
-        <Buscador busca={busca} setBusca={setBusca} />
+      <Buscador busca={busca} setBusca={setBusca} />
 
-        <div className={styles.cardapio__filtros}>
-          <Filtros filtro={filtro} setFiltro={setFiltro} />
+      <div className={styles.cardapio__filtros}>
+        <Filtros filtro={filtro} setFiltro={setFiltro} />
 
-          <Ordenador ordenador={ordenador} setOrdenador={setOrdenador} />
-        </div>
+        <Ordenador ordenador={ordenador} setOrdenador={setOrdenador} />
+      </div>
 
-        <Itens busca={busca} filtro={filtro} ordenador={ordenador} />
-      </section>
-    </main>
+      <Itens busca={busca} filtro={filtro} ordenador={ordenador} />
+    </section>
   );
 }
