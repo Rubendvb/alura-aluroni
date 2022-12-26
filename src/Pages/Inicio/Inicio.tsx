@@ -4,6 +4,8 @@ import "../../assets/styles/Tema.scss";
 
 import "./Inicio.scss";
 
+import nossaCasa from "../../assets/nossa_casa.png";
+
 export default function Inicio() {
   let pratosRecomendados = [...cardapio];
 
@@ -25,6 +27,16 @@ export default function Inicio() {
             </div>
           );
         })}
+      </div>
+
+      <h3 className="titulo">Nossa casa</h3>
+
+      <div className="nossaCasa">
+        <img src={nossaCasa} alt="Casa do aluroni" />
+
+        <div className="nossaCasa__endereco">
+          Rua Vergueiro, 3185 <br /> <br /> Vila Mariana - SP
+        </div>
       </div>
     </section>
   );
