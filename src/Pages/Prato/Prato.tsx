@@ -1,8 +1,9 @@
-import classNames from "classnames";
 import { useNavigate, useParams } from "react-router-dom";
 
 import "./Prato.scss";
 import cardapio from "../../data/cardapio.json";
+import TagsPrato from "../../components/TagsPrato/TagsPrato";
+import NotFound from "../NotFound/NotFound";
 
 export default function Prato() {
   const { id } = useParams();
@@ -12,7 +13,7 @@ export default function Prato() {
   const prato = cardapio.find((item) => item.id === Number(id));
 
   if (!prato) {
-    return "";
+    return <NotFound />;
   }
 
   return (
@@ -31,24 +32,7 @@ export default function Prato() {
         <div className="conteudo">
           <p className="conteudo__descricao">{prato.description}</p>
 
-          <div className="tags">
-            <div
-              className={classNames({
-                ["tags__tipo"]: true,
-                [`tags__tipo__${prato.category.label.toLowerCase()}`]: true,
-              })}
-            >
-              {prato.category.label}
-            </div>
-
-            <div className="tags__porcao">{prato.size}g</div>
-
-            <div className="tags__qtdpessoas">
-              Serve {prato.serving} pessoa{prato.serving > 1 ? "s" : ""}
-            </div>
-
-            <div className="tags__valor">R$ {prato.price.toFixed(2)}</div>
-          </div>
+          <TagsPrato {...prato} />
         </div>
       </section>
     </>
