@@ -20,8 +20,8 @@ export default function AppRoutes() {
             <Route index element={<Inicio />} />
             <Route path="cardapio" element={<Cardapio />} />
             <Route path="sobre" element={<Sobre />} />
-            <Route path="prato/:id" element={<Prato />} />
           </Route>
+          <Route path="prato/:id" element={<Prato />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
 
