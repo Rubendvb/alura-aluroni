@@ -1,8 +1,6 @@
 import styles from "./Item.module.scss";
-import cardapio from "../itens.json";
 import classNames from "classnames";
-
-type Props = typeof cardapio[0];
+import { Prato } from "../../../@types/Prato";
 
 export default function Item({
   title,
@@ -12,7 +10,7 @@ export default function Item({
   serving,
   price,
   photo,
-}: Props) {
+}: Prato) {
   return (
     <div className={styles.item}>
       <div className={styles.item__imagem}>

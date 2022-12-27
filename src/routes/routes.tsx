@@ -7,6 +7,7 @@ import Cardapio from "../Pages/Cardapio/Cardapio";
 import Sobre from "../Pages/Sobre/Sobre";
 import Footer from "../components/Footer/Footer";
 import NotFound from "../Pages/NotFound/NotFound";
+import Prato from "../Pages/Prato/Prato";
 
 export default function AppRoutes() {
   return (
@@ -21,6 +22,7 @@ export default function AppRoutes() {
             <Route path="sobre" element={<Sobre />} />
           </Route>
           <Route path="*" element={<NotFound />} />
+          <Route path="prato/:id" element={<Prato />} />
         </Routes>
 
         <Footer />

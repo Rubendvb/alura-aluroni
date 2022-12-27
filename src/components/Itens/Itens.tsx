@@ -5,6 +5,7 @@ import Item from "./Item/Item";
 import cardapio from "../../data/cardapio.json";
 
 import styles from "./Itens.module.scss";
+import { Cardapio } from "../../@types/Prato";
 
 interface Props {
   busca: string;
@@ -29,7 +30,7 @@ export default function Itens({ busca, filtro, ordenador }: Props) {
     return true;
   }
 
-  function ordenar(novaLista: typeof cardapio) {
+  function ordenar(novaLista: Cardapio) {
     switch (ordenador) {
       case "porcao":
         return novaLista.sort((a, b) => (a.size > b.size ? 1 : -1));
